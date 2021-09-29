@@ -27,7 +27,7 @@
   <p>小明，你是吃飽沒？</p>
   <p>{{ checkAnswer2 }}</p>
   <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="check2" >
+    <input type="checkbox" v-model="checkAnswer2" true-value="吃飽" false-value="還沒" class="form-check-input" id="check2" >
     <label class="form-check-label" for="check2">小明回覆</label>
   </div>
 
