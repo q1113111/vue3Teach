@@ -26,13 +26,16 @@
   </form>
   <hr>
   <h3>動態事件 []</h3>
-  <input type="text">
+  <input type="text" @[event]="dynamicEvent">
   <input type="text" v-model="event">
 
   <hr>
   <h3>動態物件方法 {}</h3>
   <!-- 此方法無法傳入參數 -->
-  <button class="box">
+  <button class="box" @="{
+    mouseDown:down,
+    mouseUp:up
+  }">
   </button>
   <hr>
   <h3>作為運算*</h3>
