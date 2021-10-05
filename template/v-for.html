@@ -12,7 +12,9 @@
 
   <h3>物件回圈</h3>
   <ul>
-    
+    <li v-for="item of productsObj" :key="item.name">
+      {{item}}
+    </li>
   </ul>
 
   <h3>純數值回圈</h3>
