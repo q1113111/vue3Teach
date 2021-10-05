@@ -13,7 +13,7 @@
 
   <hr class="mt-4">
   <h3>物件寫法 2</h5>
-  <div class="box"></div>
+  <div class="box" :class="ObjectClass"></div>
 
   <hr>
   <h4>陣列寫法</h4>
@@ -36,7 +36,10 @@ const App = {
     return {
       isTransform: true,
       boxColor: false,
-
+      ObjectClass:{
+        rotate: false,
+      'bg-danger': true,
+      },
       // Array 操作
       arrayClass: [''],
 
