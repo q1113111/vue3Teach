@@ -30,7 +30,16 @@ const app = Vue.createApp({
 // $emit('update:text', $event.target.value) 搭配 props，可以將更新後的值寫回 v-model 內
 app.component('custom-input', {
   props: ['text'],
-  emits:['update:text'],
+  // emits:['update:text'],
+  emits:{
+    'update:text':(val)=>{
+      if(val==='a'){
+        return true
+      }else{
+        console.warn('不等于a')
+      }
+    }
+  },
   template: `<input type="text"
   :value="text"
   @input="$emit('update:text',$event.target.value)"
