@@ -8,17 +8,30 @@
   <li>Proxy 的運作</li>
 </ul>
 <script type="module">
+  const render = (prop,data)=>{
+    const app = document.querySelector('#app')
+    app.innerHTML = `${prop}:${data}`
+  }
 // #1 Proxy 結構
 // // 控制器，關鍵知識點：監聽
-// const handler = {
-//   get(obj, prop, value) {
-//     console.log('get:', obj, prop, value);
-//   },
-//   set(obj, prop, newVal) {
-//     console.log('set:', obj, prop, newVal);
-//   }
-// };
 
+const handler={
+  get(obj,prop,value){
+    console.log('get:',obj,prop,value)
+    return obj[prop]
+  },
+  set(obj,prop,newVal){
+    console.log('set:',obj,prop,newVal)
+    obj[prop] = newVal 
+    render(prop,obj[prop])
+    return true
+    
+  }
+}
+// proxy 前面為物件 後面為控制器
+const newProxy = new Proxy({a:1},handler)
+newProxy.a = '我是sam'
+console.log(newProxy.a)
 
 </script>
 <!-- 🙇🙇練習結束🙇🙇 -->
