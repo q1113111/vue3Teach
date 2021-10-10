@@ -5,14 +5,21 @@
 
 <div id="app">
   {{person}}
+  <input type="text" v-model="person.name">
 </div>
 <script type="module">
 // import { createApp } from '...';
-const { createApp } = Vue;
+const { createApp , reactive} = Vue;
 
 const app = createApp({
   setup() {
+    const person = reactive({
+      name:'Sam'
+    })
     
+    return {
+      person
+    }
   },
 });
 
