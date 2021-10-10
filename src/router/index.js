@@ -52,6 +52,17 @@ const routes = [
     path: '/routerNav',
     name: 'RouterNav',
     component: () => import('../views/routerNav.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: '404',
+    component: () => import('../views/404.vue')
+  },
+  {
+    path: '/about/:pathMatch(.*)*',
+    redirect: {
+      name: 'About'
+    }
   }
 ]
 
