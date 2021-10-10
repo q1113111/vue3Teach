@@ -68,6 +68,16 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
+  linkActiveClass: 'active',
+  scrollBehavior (to, from, savedPosition) {
+    console.log(to)
+    if (to.name.match('About')) {
+      return {
+        top: 0
+      }
+    }
+    return {}
+  },
   routes
 })
 

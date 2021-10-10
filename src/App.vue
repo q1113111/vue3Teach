@@ -1,5 +1,7 @@
 <template>
+  <router-view />
   <div id="nav">
+    <div class="box" />
     <router-link to="/">
       Home
     </router-link> |
@@ -13,7 +15,6 @@
       路由介紹
     </router-link>
   </div>
-  <router-view />
 </template>
 
 <style lang="scss">
@@ -27,7 +28,7 @@
 
 #nav {
   padding: 30px;
-
+  height: 300vh;
   a {
     font-weight: bold;
     color: #2c3e50;
@@ -36,5 +37,8 @@
       color: #42b983;
     }
   }
+}
+.box{
+  height: 300vh;
 }
 </style>
