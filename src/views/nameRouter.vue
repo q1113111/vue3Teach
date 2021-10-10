@@ -13,6 +13,9 @@ export default {
       left: 'left',
       right: 'right'
     }
+  },
+  mounted () {
+    console.log(this.$route)
   }
 }
 </script>

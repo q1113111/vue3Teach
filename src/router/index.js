@@ -47,6 +47,11 @@ const routes = [
         ]
       }
     ]
+  },
+  {
+    path: '/routerNav',
+    name: 'RouterNav',
+    component: () => import('../views/routerNav.vue')
   }
 ]
 

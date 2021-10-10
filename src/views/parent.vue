@@ -8,7 +8,7 @@
     B
   </router-link>
   |
-  <router-link :to="{name:'a2b'}">
+  <router-link :to="{name:'a2b',query:{id:123}}">
     nameRouter
   </router-link>
   <br>

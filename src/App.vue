@@ -8,6 +8,9 @@
     </router-link> |
     <router-link :to="{name:'Parent'}">
       Parent
+    </router-link> |
+    <router-link :to="{name:'RouterNav'}">
+      路由介紹
     </router-link>
   </div>
   <router-view />
