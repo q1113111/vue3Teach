@@ -5,6 +5,9 @@
     </router-link> |
     <router-link to="/about">
       About
+    </router-link> |
+    <router-link :to="{name:'Parent'}">
+      Parent
     </router-link>
   </div>
   <router-view />
