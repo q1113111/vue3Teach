@@ -25,8 +25,9 @@ const userComponent = {
     console.log(this.user);
 
     // 如果根元件沒有使用 function return 則不能使用響應式
-    // this.user.name = '杰倫'
-  }
+    this.user.name = '杰倫'
+  },
+  inject:['user']
 }
 
 const app = Vue.createApp({
@@ -38,6 +39,11 @@ const app = Vue.createApp({
       }
     }
   },
+  provide(){
+    return {
+      user:this.user
+    }
+  }
 })
 
   app.component('card', {
@@ -48,12 +54,14 @@ const app = Vue.createApp({
         toggle: false
       }
     },
+    inject:['user'],
     components: {
       userComponent
     },
     template: `
       <div class="card" style="width: 18rem;">
         <div class="card-body">
+          {{user}}
           <userComponent></userComponent>
         </div>
       </div>

@@ -12,9 +12,10 @@
 
   <h3>使用限制（錯誤情境）</h3>
   <card2></card2>
-
+  <div class="test"></div>
   <h3>實用技巧（取代標題、多個）</h3>
-<!--  <new-title></new-title>-->
+ <new-title></new-title>
+ <child-teleport></child-teleport>
 </div>
 
 <script>
@@ -37,21 +38,39 @@ const app = Vue.createApp({
           <button type="button" @click="toggle = !toggle">切換元素顯示</button>
         </div>
       </div>
-
+      <teleport to="#target">
       <div v-if="toggle" class="alert alert-danger">被招喚的元素</div>
+      </teleport>
     `,
     props: ['item']
   });
 
   app.component('card2', {
+    data(){
+        return{
+          isShow:false
+        }
+    },
     template: `
+    <teleport to=".test" v-if="isShow">
       <div class="alert alert-danger">被招喚的元素</div>
-    `
+    </teleport>
+    <teleport to="#child" v-if="isShow">
+      <div class="alert alert-danger">被招喚的元素</div>
+    </teleport>
+    `,
+    mounted(){
+      this.isShow = true
+    },
   })
 
   app.component('new-title', {
     template: `<teleport to="title"> - 新增的標題片段</teleport>
     <teleport to="h1"> - 新增的文字片段</teleport>`
+  })
+  
+  app.component('child-teleport',{
+    template:`<div id="child">child</div>`
   })
 
   app.mount('#app');

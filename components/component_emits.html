@@ -17,8 +17,11 @@
 
   <h3>傳遞資料狀態</h3>
   內部傳來的文字：{{ text }}<br>
+  {{ logo }} <br>
+  <!-- vue3 使用同步更新的方式 -->
   <button-text
-
+    v-model:text="text"
+    v-model:logo="logo"
   ></button-text>
 
   <h3>命名注意</h3>
@@ -35,18 +38,19 @@
     data() {
       return {
         num: 0,
-        text: ''
+        text: '',
+        logo:'ss'
       };
     },
     methods: {
-      // addNum() {
-      //   console.log('addNum');
-      //   this.num++
-      // },
-      // getData(text) {
-      //   console.log('getData', text);
-      //   this.text = text;
-      // }
+      addNum() {
+        console.log('addNum');
+        this.num++
+      },
+      getData(text) {
+        console.log('getData', text);
+        this.text = text;
+      }
     }
   });
 
@@ -61,11 +65,16 @@
     data() {
       return {
         text: '內部資料',
+        logo:'logo'
       }
     },
     methods: {
+      click(){
+        this.$emit('update:text', this.text)
+        this.$emit('update:logo', this.logo)
+      },
     },
-    template: `<button type="button">emit data</button>`
+    template: `<button @click="click"  type="button">emit data</button>`
   });
 
   app.component('button-named', {
