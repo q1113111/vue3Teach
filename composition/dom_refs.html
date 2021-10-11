@@ -8,7 +8,7 @@
   <card ref="card"></card>
 </div>
 <script type="module">
-const { createApp, ref } = Vue;
+const { createApp, ref, onMounted} = Vue;
 
 const card = {
   template: `<div class="card" style="width: 18rem;">
@@ -18,7 +18,7 @@ const card = {
   </div>`,
   setup(props, context) {
     function getConsole() {
-      console.log(context);
+      console.log(context,'context');
     }
     
     return {
@@ -36,8 +36,19 @@ const app = createApp({
       name: '卡斯伯'
     });
 
+    const btn = ref(null)
+    const card = ref(null)
+    
+
+    onMounted(()=>{
+      console.log(btn.value,card.value)
+      card.value.getConsole()
+    })
+
     return {
       person,
+      btn,
+      card
     }
   },
 });

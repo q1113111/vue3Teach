@@ -9,10 +9,12 @@
   <br>
   {{ watchText2 }}
   <input type="text" v-model="product.other.name">
+    <br>
+  <input type="text" v-model="product2.other.name">
 
 </div>
 <script type="module">
-const { createApp, ref, reactive } = Vue;
+const { createApp, ref, reactive, watch } = Vue;
 
 const app = createApp({
 
@@ -22,7 +24,9 @@ const app = createApp({
     const productName = ref('蛋餅');
     const watchText = ref('');
 
-
+    watch(productName,(newVal,oldVal)=>{
+      watchText.value = `我是現在${newVal},我是之前${oldVal}`
+    })
 
     // 監聽物件
     // # ref, reactive 在此運作相同
@@ -35,11 +39,39 @@ const app = createApp({
       }
     });
     const watchText2 = ref('');
+    watch(()=>product.value.other.name,(newVal,oldVal)=>{
+      watchText2.value = `我是現在${newVal},我是之前${oldVal}`
+    })
+
+    const product2 = ref({
+      name: '蛋餅',
+      price: 30,
+      vegan: false,
+      other: {
+        name: '送安檢'
+      }
+    });
+    watch(product2,(newVal,oldVal)=>{
+      //深層監聽 值會一樣 因為都指向同個物件
+      console.log(newVal === oldVal)
+    },{deep:true})
 
 
+    // 多值監聽 觸發一個就會全部執行
+    watch([productName,product],([productNameVal,productVal],[productNamePre,productPre])=>{
+      console.log('純值',
+      productNameVal,
+      productNamePre
+      )
+      console.log('物件',
+      productVal,
+      productPre
+      )
+    },{deep:true})
 
     return {
       product,
+      product2,
       productName,
       watchText,
       watchText2
