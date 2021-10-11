@@ -4,7 +4,8 @@
 <!-- 🔥🔥練習開始🔥🔥 -->
 
 <div id="app">
-  <card ></card>
+  <card v-model:text="num" @post-data="getData"></card>
+ {{num}}
 </div>
 <script type="module">
 const { createApp, ref } = Vue;
@@ -13,16 +14,40 @@ const card = {
   template: `<div class="card" style="width: 18rem;">
     <div class="card-body">
       <button type="text" class="btn btn-primary"
+      @click="updateData">送出資料</button>
+      <p></p>
+      <button type="text" class="btn btn-primary"
       @click="pushData">送出資料</button>
+      {{text}}
     </div>
   </div>`,
-  setup(props) {
-    function pushData() {
-      console.log('pushData');
+  emits:{
+    'update:text':(text)=>{
+      if(typeof text !== 'string'){
+        console.warn(text ,'不等於字串')
+      }
+      return typeof text ==='string'
+    },
+    'post-data':(text)=>{
+      if(typeof text !== 'string'){
+        console.warn(text ,'不等於字串')
+      }
+      return typeof text ==='string'
     }
-
+  },
+  props:['text'],
+  setup(props,{emit}) {
+    const {text} = props
+    function updateData() {
+      emit('update:text','由內向外')
+    }
+    function pushData() {
+      emit('post-data','由內向外')
+    }
     return {
-      pushData
+      pushData,
+      updateData,
+      text
     }
 
   }
@@ -36,10 +61,14 @@ const app = createApp({
     const person = ref({
       name: '卡斯伯'
     });
-
+    const getData= (val)=>{
+      console.log(val)
+    }
+    const num = ref('')
     return {
       person,
-      
+      getData,
+      num
     }
   },
 });
