@@ -4,16 +4,47 @@
 <!-- 🔥🔥練習開始🔥🔥 -->
 
 <div id="app">
-  {{person}}
-  <input type="text" v-model="num">
+  <input type="text" v-model="num"> {{num}}
+  <p></p>
+  <input type="text" v-model="person.name">{{person}}
+  <p></p>
+  <input type="text" v-model="newPerson.name">{{newPerson}}
 </div>
 <script type="module">
 // import { createApp } from '...';
-const { createApp } = Vue;
+const { createApp , ref } = Vue;
 
 const app = createApp({
   setup() {
-    
+    // 可以傳純值
+    const num = ref(1)
+    num.value = 5
+
+    const person = ref({
+      name:'小名',
+      family:{
+        home:'小明的家'
+      }
+    })
+    person.value.name = 'Sam'
+    person.value.family.home = 'Sam的家'
+
+    // 可以直接覆蓋 新物件的值
+    const newPerson = ref({
+      name:'小名',
+      family:{
+        home:'小明的家'
+      }
+    })
+    newPerson.value = {
+      name:'newSam'
+    }
+
+    return{
+      num,
+      person,
+      newPerson
+    }
   },
 });
 

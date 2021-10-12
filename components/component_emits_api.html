@@ -43,7 +43,7 @@
   app.component('button-counter2', {
     emits: {
       add: (num)=>{
-        if(num !== 'number'){
+        if(typeof num !== 'number'){
           console.warn(num ,'不等於數字型別')
         }
         return typeof num === 'number'

@@ -4,7 +4,7 @@
 <!-- 🔥🔥練習開始🔥🔥 -->
 
 <div id="app">
-  <card></card>
+  <card :item="person" num="1"></card>
 </div>
 <script type="module">
 // import { createApp } from '...';
@@ -13,11 +13,24 @@ const { createApp, ref, toRef } = Vue;
 const card = {
   template: `<div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title"></h5>
+      <h5 class="card-title">{{item.name}}</h5>
+      {{num}}
+      <br>
+      {{name}}
+      <input type="text" v-model="name">
     </div>
   </div>`,
-  setup() {
+  props:['item','num'],
+  setup(props) {
+    const {item} = props
+    const {num} = props
 
+    // 二次使用 如果需要雙向綁定須使用ref
+    // 使用props解構的不需return
+    const name = ref(item.name)
+    return {
+      name
+    }
   }
 }
 

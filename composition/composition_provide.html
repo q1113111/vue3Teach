@@ -9,18 +9,19 @@
 </div>
 <script type="module">
 // import { createApp } from '...';
-const { createApp, ref } = Vue;
+const { createApp, ref,  provide, inject } = Vue;
 
 const card = {
   template: `<div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title"></h5>
-      <input type="text">
+      <h5 class="card-title">{{person}}</h5>
+      <input type="text" v-model="person.name">
     </div>
   </div>`,
   setup(props) {
-
+    const person = inject('person')
     return {
+      person
     }
   }
 }
@@ -30,10 +31,11 @@ const app = createApp({
     card,
   },
   setup(props) {
-    const person = {
+    // 需要雙向綁定需要加ref
+    const person = ref({
       name: '卡斯伯'
-    };
-
+    }); 
+    provide('person',person)
 
     return {
       person,

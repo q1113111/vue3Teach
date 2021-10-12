@@ -7,18 +7,21 @@
   <button type="button" @click="add">累加</button>
 </div>
 <script type="module">
+// import {createApp , ref} from 'vue'
+const {createApp,ref} = Vue
 
 const app = Vue.createApp({
-  data() {
+  setup(){
+    const num = ref(0)
+    
+    function add(){
+      num.value +=1
+    }
     return {
-      num: 1,
+      num,
+      add
     }
-  },
-  methods: {
-    add() {
-      this.num++;
-    }
-  },
+  }
 });
 
 app.mount('#app');
