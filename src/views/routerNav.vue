@@ -36,7 +36,7 @@ export default {
       await this.$router.addRoute({
         path: '/sabout',
         name: 'sAbout',
-        component: () => import('./About.vue')
+        component: () => import('./AboutStore.vue')
       })
       this.$router.push({ name: 'sAbout' })
     }
