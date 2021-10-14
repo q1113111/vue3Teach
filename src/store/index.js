@@ -13,6 +13,10 @@ export default createStore({
     NUM_MUTAION (state, data) {
       state.num = data
       console.log(state.num)
+    },
+    NUM_MUTAION2 (state, data) {
+      state.num = data
+      console.log(state.num)
     }
   },
   actions: {

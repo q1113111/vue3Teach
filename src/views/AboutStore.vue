@@ -16,9 +16,11 @@ const { num } = toRefs(store.state)
 // mapGetters
 const { getNum } = toRefs(store.getters)
 
+console.log(store._mutations)
 // mapMutation
-const { NUM_MUTAION: [NUM_MUTAION] } = store._mutations
+const { NUM_MUTAION: [NUM_MUTAION], NUM_MUTAION2: [NUM_MUTAION2] } = store._mutations
 NUM_MUTAION(456)
+NUM_MUTAION2(789)
 
 // mapAction
 const { numAction: [numAction] } = store._actions
