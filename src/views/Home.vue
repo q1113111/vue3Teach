@@ -1,32 +1,31 @@
 <template>
   <div class="home">
-    <span
-      v-for="item of 1000"
-      :key="item"
-    >
-      <img
-        alt="Vue logo"
-        src="/未命名.png"
-      >
-    </span>
-    <!-- <HelloWorld /> -->
-  </div>
-  <div class="box">
-    123
+    <template v-if="error">
+      {{ error }}
+    </template>
+    <Suspense v-else>
+      <template #default>
+        <User />
+      </template>
+      <template #fallback>
+        <div>loading</div>
+      </template>
+    </Suspense>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+<script setup>
+import { onErrorCaptured, ref } from 'vue'
+import User from '@/components/User.vue'
 
-export default {
-  name: 'Home',
-  components: {
-    // HelloWorld
-  }
-}
+const error = ref(null)
+onErrorCaptured(e => {
+  console.log(e)
+  error.value = e
+  return true
+})
 </script>
+
 <style lang="scss" scoped>
 img{
 float: left;

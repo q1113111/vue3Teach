@@ -28,7 +28,7 @@
 
 #nav {
   padding: 30px;
-  height: 300vh;
+  // height: 300vh;
   a {
     font-weight: bold;
     color: #2c3e50;
@@ -39,6 +39,6 @@
   }
 }
 .box{
-  height: 300vh;
+  // height: 300vh;
 }
 </style>
