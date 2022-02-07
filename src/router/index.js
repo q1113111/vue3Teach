@@ -59,6 +59,11 @@ const routes = [
     component: () => import('../views/Suspense.vue')
   },
   {
+    path: '/BaseReactivity',
+    name: 'BaseReactivity',
+    component: () => import('../views/BaseReactivity.vue')
+  },
+  {
     path: '/ref',
     name: 'ref',
     component: () => import('../views/ref.vue')

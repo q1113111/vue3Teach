@@ -18,7 +18,10 @@
     </router-link> |
     <router-link :to="{name:'ref'}">
       refs介紹
-    </router-link>
+    </router-link> |
+    <router-link :to="{name:'BaseReactivity'}">
+      基礎變數介紹
+    </router-link> |
   </div>
   <router-view />
 </template>
