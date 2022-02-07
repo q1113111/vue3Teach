@@ -1,5 +1,4 @@
 <template>
-  <router-view />
   <div id="nav">
     <div class="box" />
     <router-link to="/">
@@ -13,8 +12,15 @@
     </router-link> |
     <router-link :to="{name:'RouterNav'}">
       路由介紹
+    </router-link> |
+    <router-link :to="{name:'Suspense'}">
+      Suspense介紹
+    </router-link> |
+    <router-link :to="{name:'ref'}">
+      refs介紹
     </router-link>
   </div>
+  <router-view />
 </template>
 
 <style lang="scss">

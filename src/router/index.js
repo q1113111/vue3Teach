@@ -54,6 +54,16 @@ const routes = [
     component: () => import('../views/routerNav.vue')
   },
   {
+    path: '/suspense',
+    name: 'Suspense',
+    component: () => import('../views/Suspense.vue')
+  },
+  {
+    path: '/ref',
+    name: 'ref',
+    component: () => import('../views/ref.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: '404',
     component: () => import('../views/404.vue')
