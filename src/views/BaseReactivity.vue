@@ -1,8 +1,8 @@
 <template>
-  {{ reactiveRaw }}
+  789
 </template>
 <script setup>
-import { readonly, reactive, ref, isReactive, toRaw, markRaw } from 'vue'
+import { readonly, reactive, ref, isReactive, toRaw, markRaw, shallowReactive, shallowReadonly, isReadonly } from 'vue'
 const original = reactive({ count: 0 })
 const copy = readonly(original)
 original.count++
@@ -33,4 +33,24 @@ const mark = markRaw({})
 console.log(isReactive(reactive(mark))) // false
 const bar = reactive({ mark })
 console.log(isReactive(bar.mark))// false
+
+// shallowReactive
+const reactiveShallow = shallowReactive({
+  foo: 1,
+  nested: {
+    bar: 2
+  }
+})
+console.log(isReactive(reactiveShallow.foo))
+
+// shallowReadonly
+const readonlyShallow = shallowReadonly({
+  foo: 1,
+  nested: {
+    bar: 2
+  }
+})
+readonlyShallow.foo++ // error
+console.log(isReadonly(readonlyShallow))
+readonlyShallow.nested.bar++ // work
 </script>
