@@ -64,6 +64,11 @@ const routes = [
     component: () => import('../views/BaseReactivity.vue')
   },
   {
+    path: '/computedEffectScope',
+    name: 'computedEffectScope',
+    component: () => import('../views/computedEffectScope.vue')
+  },
+  {
     path: '/ref',
     name: 'ref',
     component: () => import('../views/ref.vue')

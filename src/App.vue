@@ -22,6 +22,9 @@
     <router-link :to="{name:'BaseReactivity'}">
       基礎變數介紹
     </router-link> |
+    <router-link :to="{name:'computedEffectScope'}">
+      新版computedEffectScope
+    </router-link> |
   </div>
   <router-view />
 </template>

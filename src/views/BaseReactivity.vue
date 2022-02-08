@@ -41,7 +41,7 @@ const reactiveShallow = shallowReactive({
     bar: 2
   }
 })
-console.log(isReactive(reactiveShallow.foo))
+console.log(isReactive(reactiveShallow.foo)) // false
 
 // shallowReadonly
 const readonlyShallow = shallowReadonly({
